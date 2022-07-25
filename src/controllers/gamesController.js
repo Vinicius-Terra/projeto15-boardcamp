@@ -35,7 +35,7 @@ export async function getGames(req, res) {
   }
   catch(err){
     console.log(err)
-    res.send(err).status(500);
+    return res.send(err).status(500);
   }
 }
 
@@ -78,10 +78,10 @@ export async function createGame(req, res) {
         VALUES ('${newGame.name}','${newGame.image}','${newGame.stockTotal}','${newGame.categoryId}', '${newGame.pricePerDay}')`
     );
 
-    res.sendStatus(201);
+    return res.sendStatus(201);
   }
   catch(err){
     console.log(err)
-    res.send(err).status(500);
+    return res.send(err).status(500);
   }
 }

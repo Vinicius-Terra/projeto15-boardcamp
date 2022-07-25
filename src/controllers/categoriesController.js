@@ -7,11 +7,11 @@ export async function getCategories(req, res) {
     SELECT * FROM categories ;
   `);
 
-  res.send(categories).status(200);
+  return res.send(categories).status(200);
   }
   catch(err){
     console.log(err)
-    res.send(err).status(500);
+    return res.send(err).status(500);
   }
 }
 
@@ -30,7 +30,7 @@ export async function getPostById(req, res) {
     [id]
   );
 
-  res.send(categories);
+  return res.send(categories);
 }
 
 export async function createCategorie(req, res) {
@@ -61,10 +61,10 @@ export async function createCategorie(req, res) {
       `INSERT INTO categories (name) VALUES ('${newCategorie.name}')`
     );
 
-    res.sendStatus(201);
+    return res.sendStatus(201);
   }
   catch(err){
     console.log(err)
-    res.send(err).status(500);
+    return res.send(err).status(500);
   }
 }

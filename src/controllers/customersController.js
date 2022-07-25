@@ -26,7 +26,7 @@ export async function getCustomers(req, res) {
   }
   catch(err){
     console.log(err)
-    res.send(err).status(500);
+    return res.send(err).status(500);
   }
 
   
@@ -40,7 +40,7 @@ export async function getCustomersById(req, res) {
     SELECT * FROM customers WHERE id = $1`, [id]);
 
   if (custumer.length){
-    res.send(custumer).status(200);
+    return res.send(custumer).status(200);
   }
   else{
     return res.sendStatus(404);
@@ -78,7 +78,7 @@ export async function createCostumer(req, res) {
       VALUES ('${newCostumer.name}','${newCostumer.phone}','${newCostumer.cpf}','${newCostumer.birthday}')`
   );
 
-  res.sendStatus(201);
+  return res.sendStatus(201);
 }
 
 export async function updateCostumer(req, res) {
@@ -115,5 +115,5 @@ export async function updateCostumer(req, res) {
       cpf = '${newCostumer.cpf}', birthday = '${newCostumer.birthday}' WHERE id = $1`, [id]
   );
 
-  res.sendStatus(200);
+  return res.sendStatus(200);
 }
